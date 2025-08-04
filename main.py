@@ -1,11 +1,11 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File
 
-app = FastAPI(title="🔥 EMERGENCY TEST 🔥", version="3.0")
+app = FastAPI()
 
 @app.get("/")
-def emergency():
-    return "🚨 EMERGENCY SERVER WORKING 🚨"
+async def root():
+    return {"greeting": "Hello, World!", "message": "Welcome to FastAPI!"}
 
 @app.post("/convert")
-def convert():
-    return "🎉 POST /convert WORKING! 🎉
+async def convert(file: UploadFile = File(...)):
+    return {"filename": file.filename, "message": "파일 업로드 성공!"}
