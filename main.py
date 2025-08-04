@@ -1,7 +1,11 @@
 from fastapi import FastAPI
 
-app = FastAPI()
+app = FastAPI(title="🔥 EMERGENCY TEST 🔥", version="3.0")
 
 @app.get("/")
-async def root():
-    return {"greeting": "Hello, World!", "message": "Welcome to FastAPI!"}
+def emergency():
+    return "🚨 EMERGENCY SERVER WORKING 🚨"
+
+@app.post("/convert")
+def convert():
+    return "🎉 POST /convert WORKING! 🎉
